@@ -9,11 +9,9 @@ RUN apt-get update \
   && apt-get install -y software-properties-common \
   && add-apt-repository -y ppa:deadsnakes/ppa \
   && apt-get install -y --no-install-recommends \
-    gosu \
     ca-certificates \
     git \
     wget \
-    nano \
     openssh-client \
     rsync \
     python \
@@ -52,5 +50,4 @@ RUN python3 -m venv /opt/git-autoshare \
   && ln -s /opt/git-autoshare/bin/git-autoshare-submodule-add
 COPY git-wrapper /usr/local/bin/git
 
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
+COPY ssh_config /root/.ssh/config
