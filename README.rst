@@ -16,7 +16,7 @@ Recommended mounts
 
 It is recommended to bind mount the following volumes to host directories:
 
-- `/home/$LOCAL_USER_NAME/.cache/pip`
-- `/home/$LOCAL_USER_NAME/.cache/acsoo-wheel`
-- `/home/$LOCAL_USER_NAME/.cache/git-autoshare`
-- `/home/$LOCAL_USER_NAME/.config/git-autoshare`
+- `/root/.cache/pip`
+- `/root/.cache/acsoo-wheel`
+- `/root/.cache/git-autoshare`
+

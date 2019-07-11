@@ -49,5 +49,6 @@ RUN python3 -m venv /opt/git-autoshare \
   && ln -s /opt/git-autoshare/bin/git-autoshare-prefetch \
   && ln -s /opt/git-autoshare/bin/git-autoshare-submodule-add
 COPY git-wrapper /usr/local/bin/git
+COPY git-autoshare.yml /root/.config/git-autoshare/repos.yml
 
 COPY ssh_config /root/.ssh/config
