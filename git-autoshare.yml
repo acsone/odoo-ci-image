@@ -1,0 +1,7 @@
+github.com:
+  "*":
+    orgs:
+      - acsone
+      - OCA
+      - odoo
+    private: True
