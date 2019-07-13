@@ -33,6 +33,11 @@ RUN apt-get update \
     node-less \
     poppler-utils \
     antiword \
+    # libreoffice for py3o
+    libreoffice-writer \
+    libreoffice-calc \
+    # gettext to manipulate .pot, .po files
+    gettext \
   # wkhtmltopdf
   && wget -q -O /tmp/wkhtmltox.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb \
   && echo "f1689a1b302ff102160f2693129f789410a1708a /tmp/wkhtmltox.deb" | sha1sum -c - \
