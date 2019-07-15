@@ -20,7 +20,11 @@ This Odoo image has the following characteristics:
   - graphviz, poppler-utils, antiword: used by some Odoo versions
   - libreoffice-writer, libreoffice-calc: for py3o
 
-- Disable ssh host key checking
+- ssh client configuration
+
+  - disable strict host key checking
+  - default user is gitlab-runner
+
 - Odoo 8, 9, 10, 11, 12 are supported.
 - Odoo is *not* preinstalled.
 
@@ -32,4 +36,3 @@ It is recommended to bind mount the following volumes to host directories:
 - `/root/.cache/pip`
 - `/root/.cache/acsoo-wheel`
 - `/root/.cache/git-autoshare`
-
