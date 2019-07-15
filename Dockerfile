@@ -14,6 +14,7 @@ RUN apt-get update \
     wget \
     openssh-client \
     rsync \
+    make \
     python \
     python3 \
     python3.5 \
