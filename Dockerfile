@@ -48,7 +48,7 @@ RUN apt-get update \
 
 # git-autoshare
 RUN python3 -m venv /opt/git-autoshare \
-  && /opt/git-autoshare/bin/pip install "git-autoshare>=1.0.0b3" \
+  && /opt/git-autoshare/bin/pip install "git-autoshare>=1.0.0b4" \
   && cd /usr/local/bin \
   && ln -s /opt/git-autoshare/bin/git-autoshare-clone \
   && ln -s /opt/git-autoshare/bin/git-autoshare-prefetch \
