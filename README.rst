@@ -6,7 +6,7 @@ This Odoo image has the following characteristics:
 - Based on Ubuntu 18.04.
 - Minimal dependencies to run ACSONE Odoo CI jobs
 
-  - git
+  - git (with user.name=GitLab and user.email=gitlab@acsone.eu)
   - git-autoshare
   - openssh-client
   - rsync

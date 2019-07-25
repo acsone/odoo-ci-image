@@ -57,4 +57,8 @@ RUN python3 -m venv /opt/git-autoshare \
 COPY git-wrapper /usr/local/bin/git
 COPY git-autoshare.yml /root/.config/git-autoshare/repos.yml
 
+# set git user.name and user.email so the runner can git push
+RUN git config --global user.email "gitlab@acsone.eu" \
+  && git config --global user.name "GitLab"
+
 COPY ssh_config /root/.ssh/config
