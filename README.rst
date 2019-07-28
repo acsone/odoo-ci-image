@@ -24,16 +24,16 @@ This Odoo image has the following characteristics:
 - ssh client configuration
 
   - disable strict host key checking
-  - default user is gitlab-runner
 
 - Odoo 8, 9, 10, 11, 12 are supported.
 - Odoo is *not* preinstalled.
+- Runs as non-privileged user named ``gitlab-runner``
 
 Recommended mounts
 ------------------
 
 It is recommended to bind mount the following volumes to host directories:
 
-- `/root/.cache/pip`
-- `/root/.cache/acsoo-wheel`
-- `/root/.cache/git-autoshare`
+- `/home/gitlab-runner/.cache/pip`
+- `/home/gitlab-runner/.cache/acsoo-wheel`
+- `/home/gitlab-runner/.cache/git-autoshare`

@@ -56,16 +56,21 @@ RUN python3 -m venv /opt/git-autoshare \
   && ln -s /opt/git-autoshare/bin/git-autoshare-prefetch \
   && ln -s /opt/git-autoshare/bin/git-autoshare-submodule-add
 COPY git-wrapper /usr/local/bin/git
-COPY git-autoshare.yml /root/.config/git-autoshare/repos.yml
+
+# create gitlab-runner user, and do the rest of config using that user
+RUN useradd --shell /bin/bash -m gitlab-runner -c ""
+USER gitlab-runner
 
 # set git user.name and user.email so the runner can git push
 RUN git config --global user.email "gitlab@acsone.eu" \
   && git config --global user.name "GitLab"
 
-COPY ssh_config /root/.ssh/config
-
 # avoid potential race conditions in creating these directories
 RUN mkdir -p \
-  /root/.local/share/Odoo/addons \
-  /root/.local/share/Odoo/filestore \
-  /root/.local/share/Odoo/sessions
+  ~/.local/share/Odoo/addons \
+  ~/.local/share/Odoo/filestore \
+  ~/.local/share/Odoo/sessions
+
+COPY git-autoshare.yml ~/.config/git-autoshare/repos.yml
+
+COPY ssh_config ~/.ssh/config
