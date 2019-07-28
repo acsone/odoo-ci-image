@@ -62,3 +62,9 @@ RUN git config --global user.email "gitlab@acsone.eu" \
   && git config --global user.name "GitLab"
 
 COPY ssh_config /root/.ssh/config
+
+# avoid potential race conditions in creating these directories
+RUN mkdir -p \
+  /root/.local/share/Odoo/addons \
+  /root/.local/share/Odoo/filestore \
+  /root/.local/share/Odoo/sessions
