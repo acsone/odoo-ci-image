@@ -8,6 +8,7 @@ This Odoo image has the following characteristics:
 
   - git (with user.name=GitLab and user.email=gitlab@acsone.eu)
   - git-autoshare
+  - mercurial
   - openssh-client
   - rsync
   - make
