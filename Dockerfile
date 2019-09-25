@@ -67,10 +67,10 @@ RUN git config --global user.email "gitlab@acsone.eu" \
 
 # avoid potential race conditions in creating these directories
 RUN mkdir -p \
-  ~/.local/share/Odoo/addons \
-  ~/.local/share/Odoo/filestore \
-  ~/.local/share/Odoo/sessions
+  /home/gitlab-runner/.local/share/Odoo/addons \
+  /home/gitlab-runner/.local/share/Odoo/filestore \
+  /home/gitlab-runner/.local/share/Odoo/sessions
 
-COPY git-autoshare.yml ~/.config/git-autoshare/repos.yml
+COPY git-autoshare.yml /home/gitlab-runner/.config/git-autoshare/repos.yml
 
-COPY ssh_config ~/.ssh/config
+COPY ssh_config /home/gitlab-runner/.ssh/config
