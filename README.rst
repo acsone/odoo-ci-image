@@ -12,7 +12,7 @@ This Odoo image has the following characteristics:
   - openssh-client
   - rsync
   - make
-  - python2/3.5/3.6/3.7
+  - python2.7/3.5/3.6/3.7
   - postgresql client
   - lessc
   - wkhtmltopdf
@@ -32,8 +32,8 @@ This Odoo image has the following characteristics:
 Recommended mounts
 ------------------
 
-It is recommended to bind mount the following volumes to host directories:
+It is recommended to mount the following volumes, for better build performance:
 
-- `/home/gitlab-runner/.cache/pip`
-- `/home/gitlab-runner/.cache/acsoo-wheel`
-- `/home/gitlab-runner/.cache/git-autoshare`
+- ``/home/gitlab-runner/.cache/pip``
+- ``/home/gitlab-runner/.cache/acsoo-wheel``
+- ``/home/gitlab-runner/.cache/git-autoshare``
