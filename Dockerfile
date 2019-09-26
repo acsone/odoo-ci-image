@@ -71,6 +71,13 @@ RUN mkdir -p \
   /home/gitlab-runner/.local/share/Odoo/filestore \
   /home/gitlab-runner/.local/share/Odoo/sessions
 
+# make sure directories in /home/gitlab-runner have adequate owner and permissions
+RUN mkdir -p \
+  /home/gitlab-runner/.cache \
+  /home/gitlab-runner/.config \
+  /home/gitlab-runner/.ssh \
+  && chmod 700 /home/gitlab-runner/.ssh
+
 COPY git-autoshare.yml /home/gitlab-runner/.config/git-autoshare/repos.yml
 
 COPY ssh_config /home/gitlab-runner/.ssh/config
