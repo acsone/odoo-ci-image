@@ -12,7 +12,7 @@ This Odoo image has the following characteristics:
   - openssh-client
   - rsync
   - make
-  - python2.7/3.5/3.6/3.7
+  - python2.7/3.5/3.6/3.7/3.8
   - postgresql client
   - lessc
   - wkhtmltopdf
@@ -25,7 +25,7 @@ This Odoo image has the following characteristics:
 
   - disable strict host key checking
 
-- Odoo 8, 9, 10, 11, 12 are supported.
+- Odoo 8, 9, 10, 11, 12, 13 are supported.
 - Odoo is *not* preinstalled.
 - Runs as non-privileged user named ``gitlab-runner``
 

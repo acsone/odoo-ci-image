@@ -24,6 +24,8 @@ RUN apt-get update \
     python3.6-venv \
     python3.7 \
     python3.7-venv \
+    python3.8 \
+    python3.8-venv \
     virtualenv \
     postgresql-client \
     # expect provides the unbuffer utility
