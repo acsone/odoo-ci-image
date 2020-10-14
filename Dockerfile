@@ -5,7 +5,8 @@ ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update \
+RUN set -x \
+  && apt-get update \
   && apt-get install -y software-properties-common \
   && add-apt-repository -y ppa:deadsnakes/ppa \
   && apt-get install -y --no-install-recommends \
@@ -43,7 +44,7 @@ RUN apt-get update \
     # gettext to manipulate .pot, .po files
     gettext \
   # wkhtmltopdf
-  && wget -q -O /tmp/wkhtmltox.deb https://downloads.wkhtmltopdf.org/0.12/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb \
+  && wget -q -O /tmp/wkhtmltox.deb https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb \
   && echo "f1689a1b302ff102160f2693129f789410a1708a /tmp/wkhtmltox.deb" | sha1sum -c - \
   && apt -y install /tmp/wkhtmltox.deb \
   && rm -f /tmp/wkhtmltox.deb \
