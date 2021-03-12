@@ -52,6 +52,7 @@ RUN set -x \
 
 # modern virtualenv
 ADD https://bootstrap.pypa.io/virtualenv.pyz /usr/local/bin/virtualenv.pyz
+RUN chmod 644 /usr/local/bin/virtualenv.pyz
 COPY virtualenv /usr/local/bin/virtualenv
 
 # git-autoshare
