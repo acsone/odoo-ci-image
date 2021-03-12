@@ -27,7 +27,6 @@ RUN set -x \
     python3.7-venv \
     python3.8 \
     python3.8-venv \
-    virtualenv \
     postgresql-client \
     # expect provides the unbuffer utility
     tcl \
@@ -50,6 +49,10 @@ RUN set -x \
   && rm -f /tmp/wkhtmltox.deb \
   # cleanup
   && rm -fr /var/lib/apt/lists/*
+
+# modern virtualenv
+ADD https://bootstrap.pypa.io/virtualenv.pyz /usr/local/bin/virtualenv.pyz
+COPY virtualenv /usr/local/bin/virtualenv
 
 # git-autoshare
 RUN python3 -m venv /opt/git-autoshare \
