@@ -13,6 +13,7 @@ This Odoo image has the following characteristics:
   - rsync
   - make
   - python2.7/3.5/3.6/3.7/3.8
+  - virtualenv
   - postgresql client
   - lessc
   - wkhtmltopdf
