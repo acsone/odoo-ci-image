@@ -26,7 +26,7 @@ This Odoo image has the following characteristics:
 
   - disable strict host key checking
 
-- Odoo 8, 9, 10, 11, 12, 13 are supported.
+- Odoo 8, 9, 10, 11, 12, 13, 14 are supported.
 - Odoo is *not* preinstalled.
 - Runs as non-privileged user named ``gitlab-runner``
 
