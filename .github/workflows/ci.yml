@@ -1,0 +1,34 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v20*
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to ghcr.io
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ghcr.io/acsone/odoo-ci-image
+      - name: Build image
+        uses: docker/build-push-action@v2
+        with:
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=registry,ref=ghcr.io/acsone/odoo-ci-image:master
+          cache-to: type=inline
+          push: true
