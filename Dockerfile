@@ -19,6 +19,7 @@ RUN set -x \
     make \
     python \
     python3 \
+    python3-venv \
     python3.5 \
     python3.5-venv \
     python3.6 \
@@ -50,23 +51,31 @@ RUN set -x \
   # cleanup
   && rm -fr /var/lib/apt/lists/*
 
-# modern virtualenv
-ADD https://bootstrap.pypa.io/virtualenv.pyz /usr/local/bin/virtualenv.pyz
-RUN chmod 644 /usr/local/bin/virtualenv.pyz
-COPY virtualenv /usr/local/bin/virtualenv
+# Install pipx, which we use to install other python tools.
+ENV PIPX_BIN_DIR=/usr/local/bin
+ENV PIPX_DEFAULT_PYTHON=/usr/bin/python3.8
+ENV PIPX_HOME=/opt/pipx
+RUN python3 -m venv /opt/pipx/venv \
+    && /opt/pipx/venv/bin/pip install --no-cache-dir pipx \
+    && ln -s /opt/pipx/venv/bin/pipx /usr/local/bin/
+
+# We don't use the ubuntu virtualenv package because it unbundles pip dependencies
+# in virtualenvs it create.
+RUN pipx install --pip-args="--no-cache-dir" virtualenv
 
 # git-autoshare
-RUN python3 -m venv /opt/git-autoshare \
-  && /opt/git-autoshare/bin/pip install "git-autoshare>=1.0.0b4" \
-  && cd /usr/local/bin \
-  && ln -s /opt/git-autoshare/bin/git-autoshare-clone \
-  && ln -s /opt/git-autoshare/bin/git-autoshare-prefetch \
-  && ln -s /opt/git-autoshare/bin/git-autoshare-submodule-add
+RUN pipx install --pip-args="--no-cache-dir" "git-autoshare>=1.0.0b4"
 COPY git-wrapper /usr/local/bin/git
+
+# manifestoo
+RUN pipx install --pip-args="--no-cache-dir" manifestoo
 
 # create gitlab-runner user, and do the rest of config using that user
 RUN useradd --shell /bin/bash -m gitlab-runner -c ""
 USER gitlab-runner
+ENV PIPX_BIN_DIR=/home/gitlab-runner/.local/bin
+ENV PIPX_HOME=/home/gitlab-runner/.local/pipx
+ENV PATH=/home/gitlab-runner/.local/bin:$PATH
 
 # set git user.name and user.email so the runner can git push
 RUN git config --global user.email "gitlab@acsone.eu" \

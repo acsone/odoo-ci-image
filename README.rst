@@ -22,6 +22,8 @@ This Odoo image has the following characteristics:
   - graphviz, poppler-utils, antiword: used by some Odoo versions
   - libreoffice-writer, libreoffice-calc: for py3o
 
+- `pipx <https://pypi.org/project:pipx>`_
+- `manifestoo <https://pypi.org/project/manifestoo>`_
 - ssh client configuration
 
   - disable strict host key checking
@@ -36,5 +38,6 @@ Recommended mounts
 It is recommended to mount the following volumes, for better build performance:
 
 - ``/home/gitlab-runner/.cache/pip``
-- ``/home/gitlab-runner/.cache/acsoo-wheel``
 - ``/home/gitlab-runner/.cache/git-autoshare``
+- ``/home/gitlab-runner/.cache/acsoo-wheel``, if you use the deprecated 
+  ``acsoo wheel`` command
