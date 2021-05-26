@@ -96,4 +96,4 @@ RUN mkdir -p \
 
 COPY git-autoshare.yml /home/gitlab-runner/.config/git-autoshare/repos.yml
 
-COPY ssh_config /home/gitlab-runner/.ssh/config
+COPY --chown=gitlab-runner --chmod=644 ssh_config /home/gitlab-runner/.ssh/config
