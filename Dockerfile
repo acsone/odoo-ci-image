@@ -28,6 +28,8 @@ RUN set -x \
     python3.7-venv \
     python3.8 \
     python3.8-venv \
+    python3.9 \
+    python3.9-venv \
     postgresql-client \
     # expect provides the unbuffer utility
     tcl \

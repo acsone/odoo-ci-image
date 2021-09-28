@@ -12,7 +12,7 @@ This Odoo image has the following characteristics:
   - openssh-client
   - rsync
   - make
-  - python2.7/3.5/3.6/3.7/3.8
+  - python2.7/3.5/3.6/3.7/3.8/3.9
   - virtualenv
   - postgresql client
   - lessc
