@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # some environment variables
 ENV LANG=C.UTF-8 \
@@ -30,6 +30,8 @@ RUN set -x \
     python3.8-venv \
     python3.9 \
     python3.9-venv \
+    python3.10 \
+    python3.10-venv \
     postgresql-client \
     # expect provides the unbuffer utility
     tcl \
@@ -46,8 +48,8 @@ RUN set -x \
     # gettext to manipulate .pot, .po files
     gettext \
   # wkhtmltopdf
-  && wget -q -O /tmp/wkhtmltox.deb https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb \
-  && echo "f1689a1b302ff102160f2693129f789410a1708a /tmp/wkhtmltox.deb" | sha1sum -c - \
+  && wget -q -O /tmp/wkhtmltox.deb https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb \
+  && echo "ad0264869fe40ccfb91c32e9be7318bfabf3864f6a8a15567f7a38afe4a9a932 /tmp/wkhtmltox.deb" | sha256sum -c - \
   && apt -y install /tmp/wkhtmltox.deb \
   && rm -f /tmp/wkhtmltox.deb \
   # cleanup
@@ -55,7 +57,6 @@ RUN set -x \
 
 # Install pipx, which we use to install other python tools.
 ENV PIPX_BIN_DIR=/usr/local/bin
-ENV PIPX_DEFAULT_PYTHON=/usr/bin/python3.8
 ENV PIPX_HOME=/opt/pipx
 RUN python3 -m venv /opt/pipx/venv \
     && /opt/pipx/venv/bin/pip install --no-cache-dir pipx \
