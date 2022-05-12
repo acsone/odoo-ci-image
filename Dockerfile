@@ -71,7 +71,7 @@ RUN pipx install --pip-args="--no-cache-dir" "git-autoshare>=1.0.0b4"
 COPY git-wrapper /usr/local/bin/git
 
 # manifestoo
-RUN pipx install --pip-args="--no-cache-dir" "manifestoo>=0.3.1"
+RUN pipx install --pip-args="--no-cache-dir" "manifestoo>=0.4.0"
 
 # create gitlab-runner user, and do the rest of config using that user
 RUN useradd --shell /bin/bash -m gitlab-runner -c ""
