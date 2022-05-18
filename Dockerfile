@@ -84,6 +84,10 @@ ENV PATH=/home/gitlab-runner/.local/bin:$PATH
 RUN git config --global user.email "gitlab@acsone.eu" \
   && git config --global user.name "GitLab"
 
+# disable git safe repository detection, because GitLab CI checks out as root,
+# and we run as gitlab-runner
+RUN git config --global --add safe.directory '*'
+
 # avoid potential race conditions in creating these directories
 RUN mkdir -p \
   /home/gitlab-runner/.local/share/Odoo/addons \
