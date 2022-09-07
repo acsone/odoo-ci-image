@@ -64,7 +64,7 @@ RUN python3 -m venv /opt/pipx/venv \
 
 # We don't use the ubuntu virtualenv package because it unbundles pip dependencies
 # in virtualenvs it create.
-RUN pipx install --pip-args="--no-cache-dir" virtualenv
+RUN pipx install --pip-args="--no-cache-dir" virtualenv && virtualenv --upgrade-embed-wheels
 
 # git-autoshare
 RUN pipx install --pip-args="--no-cache-dir" "git-autoshare>=1.0.0b4"
